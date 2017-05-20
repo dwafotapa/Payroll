@@ -1,0 +1,55 @@
+﻿html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 71px;
+    padding-top: 50px;
+    /*padding-bottom: 20px;*/
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.body-content .panel:first-child,
+.body-content .alert:first-child {
+    margin-top: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar {
+    background-color: rebeccapurple;
+}
+
+.navbar .logo {
+    color: white;
+    font-weight: bold;
+}
+
+.btn-file {
+    margin-right: 5px;
+}
+
+.glyphicon-ok {
+    background-color: #5cb85c;
+    border-radius: 50%;
+    color: white;
+    padding: 5px;
+}
+
+footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}

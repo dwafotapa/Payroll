@@ -1,0 +1,47 @@
+@model IEnumerable<Payslip>
+@{
+    ViewData["Title"] = "Payroll Finish Page";
+}
+
+@Html.Partial("_PayrollFile")
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title"><strong>Finish Payroll</strong></div>
+    </div>
+    <form method="post" enctype="multipart/form-data" asp-controller="Payroll" asp-action="Finish">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" /></th>
+                            <th>Name</th>
+                            <th class="text-right">Gross Income</th>
+                            <th class="text-right">Income Tax</th>
+                            <th class="text-right">Net Income</th>
+                            <th class="text-right">Super</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var payslip in Model)
+                    {
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>@payslip.Name</td>
+                            <td class="text-right">@payslip.GrossIncome</td>
+                            <td class="text-right">@payslip.IncomeTax</td>
+                            <td class="text-right">@payslip.NetIncome</td>
+                            <td class="text-right">@payslip.Super</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type=hidden name="FileName" value="@ViewData["fileName"]" />
+            <input type="submit" class="btn btn-success" name="Submit" value="@Workflow.Run" />
+        </div>
+    </form>
+</div>

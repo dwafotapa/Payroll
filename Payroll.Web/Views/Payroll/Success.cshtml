@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Payroll Success Page";
+}
+
+@Html.Partial("_PayrollFile")
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title"><strong>Success</strong></div>
+    </div>
+    <div class="panel-body">
+        <span class="glyphicon glyphicon-ok"></span> Your file '@ViewData["fileName"]' has run successfully.
+    </div>
+</div>

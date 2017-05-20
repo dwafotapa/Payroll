@@ -1,0 +1,46 @@
+@model IEnumerable<Payslip>
+@{
+    ViewData["Title"] = "Payroll Review Page";
+}
+
+@Html.Partial("_PayrollFile")
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title"><strong>Review payslips</strong></div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="text-right">Gross Income</th>
+                        <th class="text-right">Income Tax</th>
+                        <th class="text-right">Net Income</th>
+                        <th class="text-right">Super</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var payslip in Model)
+                {
+                    <tr>
+                        <td>@payslip.Name</td>
+                        <td class="text-right">@payslip.GrossIncome</td>
+                        <td class="text-right">@payslip.IncomeTax</td>
+                        <td class="text-right">@payslip.NetIncome</td>
+                        <td class="text-right">@payslip.Super</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <form method="post" asp-controller="Payroll" asp-action="Review">
+            <input type=hidden name="FileName" value="@ViewData["fileName"]" />
+            <input type="submit" class="btn btn-success" name="Submit" value="@Workflow.Save" />
+            <input type="submit" class="btn btn-danger" name="Submit" value="@Workflow.Delete" />
+        </form>
+    </div>
+</div>

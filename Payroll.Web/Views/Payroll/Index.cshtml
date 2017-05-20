@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Payroll Index Page";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title"><strong>Start payroll</strong></div>
+    </div>
+    <form class="payslip" method="post" enctype="multipart/form-data" asp-controller="Payroll" asp-action="Index">
+        <div class="panel-body">
+            <label class="btn btn-default btn-file">
+                Browse <input type="file" name="file" style="display: none" />
+            </label>
+            <span class="btn-label"></span>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success" disabled>Start</button>
+        </div>
+    </form>
+</div>
