@@ -10,14 +10,6 @@ Payroll is an accounting software built with [ASP.NET Core MVC](https://github.c
 
 Go to https://www.microsoft.com/net/core, select your OS and follow the installation guide. At the time of writing, the latest version is .NET Core 1.1.
 
-### Nuget packages
-
-If you can, restore the Nuget package dependencies/dlls of all projects with your IDE, then build the solution. Otherwise, at the root of the solution, run:
-```sh
-$ dotnet restore
-$ dotnet build
-```
-
 ### Bower packages
 
 In a command line window, run:
@@ -33,6 +25,14 @@ The command will install the following [Bower](https://bower.io/) packages:
 * [jQuery](https://jquery.com/)
 * [jQuery Validation](https://jqueryvalidation.org/)
 * [lodash](https://lodash.com/)
+
+### Nuget packages
+
+If you can, restore the Nuget package dependencies/dlls of all projects with your IDE, then build the solution. Otherwise, at the root of the solution, run:
+```sh
+$ dotnet restore
+$ dotnet build
+```
 
 
 ## Usage
