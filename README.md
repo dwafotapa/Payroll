@@ -28,7 +28,9 @@ The command will install the following [Bower](https://bower.io/) packages:
 
 ### Nuget packages
 
-If you can, restore the Nuget package dependencies/dlls of all projects with your IDE, then build the solution. Otherwise, at the root of the solution, run:
+Restore the Nuget package dependencies/dlls of all projects within your IDE, then build the solution.
+
+Or run from your command line:
 ```sh
 $ dotnet restore
 $ dotnet build
@@ -47,6 +49,8 @@ Payroll is now up and running at http://localhost:5000/.
 To run the tests:
 ```sh
 $ cd ../Payroll.Web.UnitTests
+$ donet restore
+$ dotnet build
 $ dotnet xunit
 ```
 
@@ -58,13 +62,33 @@ $ dotnet xunit
 The `Payroll.Web.UnitTests` project contains unit tests using [xUnit](https://xunit.github.io/) and [Moq](https://github.com/moq/moq4).
 I have structured my tests so that there's a test class per class being tested and a nested class for each method being tested. Easy to read and a nice way to keep track of what has been tested.
 
-Methods that are too straightforward have not been tested.
+Methods that are obvious or straightforward have not been tested.
 
 ### Workflow
 
 Temp -> Saved -> Processed
 
 When a payroll file is uploaded, it is saved in `Uploads/Temp` folder.
+
 Then when it is reviewed and saved, it is moved to `Uploads/Saved` folder.
+
 If it is reviewed and deleted, the payroll file is hard-deleted.
+
 Finally, when the payroll is run, it is moved to `Uploads/Processed` folder.
+
+### Payroll File Format
+
+Here is the .csv input and output formats:
+
+* Input: first name, last name, annual salary, super rate (%), payment start date
+* Output: name, pay period, gross income, income tax, net income, super
+
+### Calculation Details
+
+The calculation details will be the following:
+
+* pay period = per calendar month
+* gross income = annual salary / 12 months
+* income tax = based on this [tax table](https://www.ato.gov.au/rates/individual-income-tax-rates/)
+* net income = gross income - income tax
+* super = gross income x super rate
