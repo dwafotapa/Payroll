@@ -43,7 +43,7 @@ namespace Payroll.Web.Controllers
         {
             try
             {
-                var filePath = _appSettingsOptions.Value.Uploads.Temp + fileName;
+                var filePath = _appSettingsOptions.Value.TempFolderPath + fileName;
                 var payslips = _payrollFileService.Read(filePath);
                 ViewData["fileName"] = fileName;
                 return View(payslips);
@@ -68,7 +68,7 @@ namespace Payroll.Web.Controllers
         {
             try
             {
-                var filePath = _appSettingsOptions.Value.Uploads.Saved + fileName;                
+                var filePath = _appSettingsOptions.Value.SavedFolderPath + fileName;                
                 var payslips = _payrollFileService.Read(filePath);
                 ViewData["fileName"] = fileName;
                 return View(payslips);

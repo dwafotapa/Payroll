@@ -53,7 +53,7 @@ namespace Payroll.Web.Services
 
         public void Create(string fileName, IEnumerable<Payslip> payslips)
         {
-            System.IO.File.WriteAllLines(_appSettingsOptions.Value.Uploads.Temp + fileName, payslips.Select(p => p.ToString()));
+            System.IO.File.WriteAllLines(_appSettingsOptions.Value.TempFolderPath + fileName, payslips.Select(p => p.ToString()));
         }
 
         public IEnumerable<Payslip> Read(string filePath)
@@ -79,22 +79,22 @@ namespace Payroll.Web.Services
 
         public void Save(string fileName)
         {
-            var sourceFilePath = _appSettingsOptions.Value.Uploads.Temp + fileName;
-            var destinationFilePath = _appSettingsOptions.Value.Uploads.Saved + fileName;
+            var sourceFilePath = _appSettingsOptions.Value.TempFolderPath + fileName;
+            var destinationFilePath = _appSettingsOptions.Value.SavedFolderPath + fileName;
             if (File.Exists(destinationFilePath)) File.Delete(destinationFilePath);
             File.Move(sourceFilePath, destinationFilePath);
         }
         
         public void Delete(string fileName)
         {
-            var filePath = _appSettingsOptions.Value.Uploads.Temp + fileName;
+            var filePath = _appSettingsOptions.Value.TempFolderPath + fileName;
             File.Delete(filePath);
         }
 
         public void Run(string fileName)
         {
-            var sourceFilePath = _appSettingsOptions.Value.Uploads.Saved + fileName;
-            var destinationFilePath = _appSettingsOptions.Value.Uploads.Processed + fileName;
+            var sourceFilePath = _appSettingsOptions.Value.SavedFolderPath + fileName;
+            var destinationFilePath = _appSettingsOptions.Value.ProcessedFolderPath + fileName;
             if (File.Exists(destinationFilePath)) File.Delete(destinationFilePath);
             File.Move(sourceFilePath, destinationFilePath);
         }
