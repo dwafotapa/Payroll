@@ -49,7 +49,7 @@ Payroll is now up and running at http://localhost:5000/.
 To run the tests:
 ```sh
 $ cd ../Payroll.Web.UnitTests
-$ donet restore
+$ dotnet restore
 $ dotnet build
 $ dotnet xunit
 ```
